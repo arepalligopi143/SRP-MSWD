@@ -1,0 +1,44 @@
+Diffrences between orderd and unorderd list with examples:
+
+
+<p>family</p>
+
+<ol>
+  <li>fahter</li>
+  <li>mother</li>
+  <li>brother</li>
+   <li>sister</li>
+</ol>
+
+<p>work hard ... </p>
+
+
+ <p>family</p>
+
+<ul>
+  <li>fahter</li>
+  <li>mother</li>
+  <li>brother</li>
+   <li>sister</li>
+</ul>
+
+<p>work hard ... </p>
+
+
+
+outputs:
+family
+
+1fahter
+2mother
+3brother
+4sister
+work hard ...
+
+family
+
+.fahter
+.mother
+.brother
+.sister
+work hard ...
