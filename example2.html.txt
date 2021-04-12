@@ -1,0 +1,7 @@
+Nesting Element:
+
+<k>my  mom is <strong>good</strong>honest</k>
+<k>my  mom is <strong>good honest</strong></k>
+
+output:my mom is goodhonest 
+my mom is good honest
