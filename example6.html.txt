@@ -1,0 +1,9 @@
+
+link creation:
+<a>amma</a>
+<a href="">amma</a>
+
+
+output:
+amma
+amma
