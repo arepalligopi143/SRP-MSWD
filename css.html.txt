@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-color: red;
+}
+
+h1 {
+  color: green;
+  text-align: right;
+}
+
+
+</style>
+</head>
+<body>
+
+<h1>  CSS Example</h1>
+<p>This is a line.</p>
+
+</body>
+</html>
