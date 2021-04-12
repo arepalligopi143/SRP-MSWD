@@ -1,0 +1,14 @@
+
+
+Headings
+
+<h1> Title of the page</h1>
+<h2>Page Heading</h2>
+<h3>Subheading in  the page</h3>
+<h4>sub-sub heading</h4>
+
+output
+Title of the page
+Page Heading
+Subheading in the page
+sub-sub heading
