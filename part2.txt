@@ -1,0 +1,291 @@
+part2/courseinfo/index.js
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+ part2/courseinfo/README.md
+
+ part2/courseinfo/package.json 
+
+{
+  "name": "courseinfo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
+ part2/courseinfo/public/favicon.ico 
+Binary file not shown.
+  part2/courseinfo/public/index.html 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
+ BIN +5.22 KB part2/courseinfo/public/logo192.png 
+Binary file not shown.
+ BIN +9.44 KB part2/courseinfo/public/logo512.png 
+Binary file not shown.
+ 
+part2/courseinfo/public/manifest.json 
+
+{
+  "short_name": "React App",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
+
+ part2/courseinfo/public/robots.txt 
+
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow:
+
+  part2/courseinfo/src/App.js 
+
+import React from "react";
+
+import Course from "./components/Course";
+
+const App = () => {
+  const courses = [
+    {
+      name: "Half Stack application development",
+      id: 1,
+      parts: [
+        {
+          name: "Fundamentals of React",
+          exercises: 10,
+          id: 1
+        },
+        {
+          name: "Using props to pass data",
+          exercises: 7,
+          id: 2
+        },
+        {
+          name: "State of a component",
+          exercises: 14,
+          id: 3
+        },
+        {
+          name: "Redux",
+          exercises: 11,
+          id: 4
+        }
+      ]
+    },
+    {
+      name: "Node.js",
+      id: 2,
+      parts: [
+        {
+          name: "Routing",
+          exercises: 3,
+          id: 1
+        },
+        {
+          name: "Middlewares",
+          exercises: 7,
+          id: 2
+        }
+      ]
+    }
+  ];
+
+  return (
+    <div>
+      {courses.map(course => (
+        <Course course={course} />
+      ))}
+    </div>
+  );
+};
+
+export default App;
+ 
+part2/courseinfo/src/components/Content.js 
+
+import React from 'react';
+
+import Part from "./Part";
+
+const Content = ({parts}) => {
+  // See: https://reactjs.org/docs/lists-and-keys.html
+  // When you don’t have stable IDs for rendered items, you may use the item index as a key as a last resort:
+  return parts.map((part, i) => <Part key={i} part={part} />);
+}
+
+ export default Content;
+
+ part2/courseinfo/src/components/Course.js 
+
+import React from "react";
+
+import Header from "./Header";
+import Content from "./Content";
+import Total from "./Total";
+
+const Course = ({ course }) => {
+  const { name, parts } = course;
+  const exercises = parts.map(part => part.exercises);
+  return (
+    <div>
+      <Header name={name} />
+      <Content parts={parts} />
+      <Total exercises={exercises} />
+    </div>
+  );
+};
+
+export default Course;
+  part2/courseinfo/src/components/Header.js 
+
+import React from "react";
+
+const Header = ({ name }) => {
+  return <h1>{name}</h1>;
+};
+
+export default Header;
+  part2/courseinfo/src/components/Part.js 
+
+import React from 'react';
+
+const Part = ({part}) => {
+  const { name, exercises } = part;
+  return <p> {name} {exercises} </p>;
+}
+
+ export default Part;
+
+ part2/courseinfo/src/components/Total.js 
+
+import React from "react";
+
+const Total = ({ exercises }) => {
+  const total = exercises.reduce((a, b) => a + b, 0);
+  return <strong>Total of {total} exercises</strong>;
+};
+
+export default Total;
+
+  part2/courseinfo/src/index.js 
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+ part2/courseinfo/src/setupTests.js 
+
+// jest-dom adds custom jest matchers for asserting on DOM nodes.
+// allows you to do things like:
+// expect(element).toHaveTextContent(/react/i)
+// learn more: https://github.com/testing-library/jest-dom
+import '@testing-library/jest-dom/extend-expect';
