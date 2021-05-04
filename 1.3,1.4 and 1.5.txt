@@ -1,0 +1,83 @@
+part1/src/App.js
+
+
+import Total from './components/Test';
+
+const App = () => {
+  const course = 'full Stack application development'
+
+ 
+  const test1 = 'Fundamentals of React'
+  const test2 = 'Using props to pass data'
+  const test3 = 'State of a component'
+  const tests = [test1,test2,test3];  
+
+  const exce1 = 20
+  const exec2 = 10
+  const exec3 = 17
+  const exercises = [exec1,exce2,exec3];
+
+  
+  const courses = []
+  parts.forEach((part, i) => {
+    courses.push({ part, exec: exec[i]})
+  });
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exec: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exec: 7
+      },
+      {
+        name: 'State of a component',
+        exec: 14
+      }
+    ]
+  };
+
+  const { name, parts } = course;
+  const exercises = parts.map(part => part.exec);
+  return (
+    <div>
+      <Header course={course} />
+      <Content courses={courses} />
+      <Header courseName={name} />
+      <Content parts={parts} />
+      <Total exercises={exercises} />
+    </div>
+  )
+
+ part1/src/components/Content.js
+
+import React from 'react';
+
+const Part = ({course}) => {
+  return <p> {course.part} {course.exercises} </p>;
+const Part = ({part}) => {
+  const { name, exercises } = part;
+  return <p> {name} {exercises} </p>;
+}
+
+ export default Part;
+
+
+part1/src/components/Total.js
+
+
+import React from 'react';
+
+const Total = ({exercises}) => {
+  const total = exercises.reduce((x, y) => x + y, 0)
+  const total = exercises.reduce((x, y) => x + y, 0);
+  return (
+    <p>Number of exercises {total}</p>
+  );
+
+
+
+
